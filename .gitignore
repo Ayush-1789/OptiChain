@@ -1,0 +1,252 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build outputs
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Vite build tool
+.vite
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary folders
+tmp/
+temp/
+
+# ESLint cache
+.eslintcache
+
+# Prettier cache
+.prettiercache
+
+# Stylelint cache
+.stylelintcache
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.test
+
+# Webpack Bundle Analyzer
+.webpack-bundle-analyzer
+
+# Tailwind CSS
+tailwind.config.js.map
+
+# Testing
+coverage/
+.coverage
+.nyc_output
+junit.xml
+
+# Misc
+*.tgz
+*.tar.gz
+.cache/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary files
+*.tmp
+*.temp
+
+# Package manager lock files (uncomment if you want to ignore them)
+# package-lock.json
+# yarn.lock
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# Vercel
+.vercel
+
+# Sentry
+.sentryclirc
+
+# Local development
+.local
+
+# Hot reload
+.hot-update.json
+*.hot-update.js
+
+# PWA
+sw.js
+workbox-*.js
+
+# React
+.eslintcache
+
+# CRA
+.env.development.local
+.env.local
+.env.production.local
+.env.test.local
+
+# Build tools
+.turbo
+
+# Monorepo
+.rush/
+
+# Linting and formatting
+.eslintcache
+.prettiercache
+.stylelintcache
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Archive files
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Certificate files
+*.pem
+*.key
+*.crt
+*.cert
+
+# API keys and secrets
+secrets.json
+config/secrets.js
+
+# Documentation build
+docs/build/
+
+# Storybook
+storybook-static/
+
+# Chromatic
+chromatic.log
+
+# Capacitor
+android/
+ios/
