@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Navigation from '../common/Navigation';
 import { 
   Settings, 
   AlertTriangle, 
@@ -256,45 +257,7 @@ const RegionalOperations: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Navigation Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link to="/" className="flex items-center">
-                <div className="bg-blue-900 text-white px-3 py-1 rounded-lg font-bold">
-                  W
-                </div>
-                <span className="text-sm text-slate-600 ml-2">OptiChain Regional Portal</span>
-              </Link>
-            </div>
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/regional/dashboard" className="text-slate-700 hover:text-blue-900 font-medium">
-                Dashboard
-              </Link>
-              <Link to="/regional/analytics" className="text-slate-700 hover:text-blue-900 font-medium">
-                Analytics
-              </Link>
-              <Link to="/regional/network" className="text-slate-700 hover:text-blue-900 font-medium">
-                Store Network
-              </Link>
-              <Link to="/regional/operations" className="text-blue-900 font-medium border-b-2 border-blue-900 pb-1">
-                Operations
-              </Link>
-            </nav>
-            <div className="flex items-center space-x-4">
-              <button className="text-slate-500 hover:text-slate-700">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </button>
-              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                <span className="text-blue-900 font-bold text-sm">RM</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navigation role="regional" currentPage="operations" />
 
       <div className="p-6">
         {/* Header */}

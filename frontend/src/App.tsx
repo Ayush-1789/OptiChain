@@ -18,6 +18,7 @@ import InventorySimulator from './components/store/InventorySimulator';
 import DeliveryDashboard from './components/delivery/DeliveryDashboard';
 import RoutePlanning from './components/delivery/RoutePlanning';
 import FleetManagement from './components/delivery/FleetManagement';
+import RegionalDashboard from './components/regional/RegionalDashboard';
 import ProcurementDashboard from './components/procurement/ProcurementDashboard';
 import VendorManagement from './components/procurement/VendorManagement';
 import PurchaseOrders from './components/procurement/PurchaseOrders';
@@ -43,9 +44,13 @@ function App() {
           <Route path="/store/operations" element={<StoreOperations />} />
           <Route path="/store/analytics" element={<SalesAnalytics />} />
           <Route path="/store/inventory-simulator" element={<InventorySimulator />} />
+          <Route path="/supplier/inventory-simulator" element={<InventorySimulator />} />
+          <Route path="/procurement/inventory-simulator" element={<InventorySimulator />} />
+          <Route path="/regional/inventory-simulator" element={<InventorySimulator />} />
           <Route path="/delivery/dashboard" element={<DeliveryDashboard />} />
           <Route path="/delivery/routes" element={<RoutePlanning />} />
           <Route path="/delivery/fleet" element={<FleetManagement />} />
+          <Route path="/regional/dashboard" element={<RegionalDashboard />} />
           <Route path="/procurement/dashboard" element={<ProcurementDashboard />} />
           <Route path="/procurement/vendors" element={<VendorManagement />} />
           <Route path="/procurement/orders" element={<PurchaseOrders />} />

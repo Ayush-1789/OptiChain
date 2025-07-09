@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Navigation from '../common/Navigation';
 import { 
   TrendingUp, 
   TrendingDown, 
@@ -268,33 +269,7 @@ const RegionalDashboard: React.FC = () => {
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       {/* Navigation Header */}
-      <div className="bg-white shadow-sm rounded-lg mb-6">
-        <div className="px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link to="/" className="flex items-center">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                  <Store className="h-5 w-5 text-white" />
-                </div>
-              </Link>
-              <nav className="flex space-x-8">
-                <Link to="/regional/dashboard" className="text-blue-900 font-medium border-b-2 border-blue-900 pb-1">
-                  Dashboard
-                </Link>
-                <Link to="/regional/analytics" className="text-slate-700 hover:text-blue-900 font-medium">
-                  Analytics
-                </Link>
-                <Link to="/regional/network" className="text-slate-700 hover:text-blue-900 font-medium">
-                  Network
-                </Link>
-                <Link to="/regional/operations" className="text-slate-700 hover:text-blue-900 font-medium">
-                  Operations
-                </Link>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Navigation role="regional" currentPage="dashboard" />
 
       {/* Header */}
       <div className="mb-8">

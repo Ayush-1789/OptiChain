@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Navigation from '../common/Navigation';
 
 interface DashboardMetric {
   label: string;
@@ -211,48 +212,7 @@ const StoreDashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link to="/" className="flex items-center">
-                <span className="text-2xl font-bold text-blue-900">Walmart</span>
-                <span className="text-sm text-slate-600 ml-2">OptiChain Store Manager Portal</span>
-              </Link>
-            </div>
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/store/dashboard" className="text-blue-900 font-medium border-b-2 border-blue-900 pb-1">
-                Dashboard
-              </Link>
-              <Link to="/store/inventory" className="text-slate-700 hover:text-blue-900 font-medium">
-                Inventory
-              </Link>
-              <Link to="/store/staff" className="text-slate-700 hover:text-blue-900 font-medium">
-                Staff
-              </Link>
-              <Link to="/store/customer" className="text-slate-700 hover:text-blue-900 font-medium">
-                Customer
-              </Link>
-              <Link to="/store/operations" className="text-slate-700 hover:text-blue-900 font-medium">
-                Operations
-              </Link>
-              <Link to="/store/analytics" className="text-slate-700 hover:text-blue-900 font-medium">
-                Analytics
-              </Link>
-            </nav>
-            <div className="flex items-center space-x-4">
-              <button className="text-slate-500 hover:text-slate-700">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </button>
-              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                <span className="text-blue-900 font-bold text-sm">AM</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navigation role="store" currentPage="dashboard" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Section */}
@@ -507,6 +467,23 @@ const StoreDashboard: React.FC = () => {
                       </svg>
                     </div>
                     <span className="font-medium text-slate-900">Customer Feedback</span>
+                  </div>
+                  <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+
+                <Link 
+                  to="/store/inventory-simulator" 
+                  className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition-colors group border border-slate-100"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="p-2 bg-indigo-50 rounded-lg group-hover:bg-indigo-100 transition-colors">
+                      <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    </div>
+                    <span className="font-medium text-slate-900">Inventory Simulator</span>
                   </div>
                   <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

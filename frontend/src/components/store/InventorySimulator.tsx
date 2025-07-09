@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import Navigation from '../common/Navigation';
 
 interface SimulationScenario {
   id: string;
@@ -47,8 +48,53 @@ interface SimulationResult {
   actionItems: string[];
 }
 
+interface RoleConfig {
+  title: string;
+  location: string;
+  manager: string;
+}
+
+type UserRole = 'store' | 'supplier' | 'procurement' | 'regional';
+
 const InventorySimulator: React.FC = () => {
-  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Determine current role based on URL path
+  const getCurrentRole = (): UserRole => {
+    const path = location.pathname;
+    if (path.startsWith('/store/')) return 'store';
+    if (path.startsWith('/supplier/')) return 'supplier';
+    if (path.startsWith('/procurement/')) return 'procurement';
+    if (path.startsWith('/regional/')) return 'regional';
+    return 'store'; // fallback
+  };
+
+  const currentRole: UserRole = getCurrentRole();
+  
+  // Role-specific configurations
+  const roleConfig: Record<UserRole, RoleConfig> = {
+    store: {
+      title: 'Store Inventory Simulator',
+      location: 'Mumbai Central Store',
+      manager: 'Rahul Sharma - Store Manager'
+    },
+    supplier: {
+      title: 'Supplier Inventory Simulator',
+      location: 'Supply Chain Network',
+      manager: 'Priya Patel - Supply Manager'
+    },
+    procurement: {
+      title: 'Procurement Inventory Simulator',
+      location: 'Central Procurement',
+      manager: 'Arjun Singh - Procurement Head'
+    },
+    regional: {
+      title: 'Regional Inventory Simulator',
+      location: 'Mumbai Region',
+      manager: 'Kavita Mehta - Regional Manager'
+    }
+  };
+  
   const [activeTab, setActiveTab] = useState<'scenarios' | 'simulation' | 'results'>('scenarios');
   const [selectedScenario, setSelectedScenario] = useState<SimulationScenario | null>(null);
   const [simulationRunning, setSimulationRunning] = useState(false);
@@ -251,25 +297,18 @@ const InventorySimulator: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
+      <Navigation role={currentRole} currentPage="simulator" />
+
+      {/* Page Title */}
+      <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => navigate('/store')}
-                className="text-gray-600 hover:text-gray-900 flex items-center space-x-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                <span>Back to Dashboard</span>
-              </button>
-              <div className="h-6 w-px bg-gray-300"></div>
-              <h1 className="text-2xl font-bold text-gray-900">Inventory Simulator</h1>
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">{roleConfig[currentRole].title}</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-500">Store: Mumbai Central</span>
-              <span className="text-sm text-gray-500">Manager: Rahul Sharma</span>
+              <span className="text-sm text-gray-500">Location: {roleConfig[currentRole].location}</span>
+              <span className="text-sm text-gray-500">{roleConfig[currentRole].manager}</span>
             </div>
           </div>
         </div>

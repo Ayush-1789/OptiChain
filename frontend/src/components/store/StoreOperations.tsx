@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Navigation from '../common/Navigation';
 import { 
   TrendingUp, 
   TrendingDown, 
@@ -206,49 +207,7 @@ const StoreOperations: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link to="/" className="flex items-center">
-                <span className="text-2xl font-bold text-blue-900">Walmart</span>
-                <span className="text-sm text-slate-600 ml-2">OptiChain Store Manager Portal</span>
-              </Link>
-            </div>
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/store/dashboard" className="text-slate-700 hover:text-blue-900 font-medium">
-                Dashboard
-              </Link>
-              <Link to="/store/inventory" className="text-slate-700 hover:text-blue-900 font-medium">
-                Inventory
-              </Link>
-              <Link to="/store/staff" className="text-slate-700 hover:text-blue-900 font-medium">
-                Staff
-              </Link>
-              <Link to="/store/customer" className="text-slate-700 hover:text-blue-900 font-medium">
-                Customer
-              </Link>
-              <Link to="/store/operations" className="text-blue-900 font-medium border-b-2 border-blue-900 pb-1">
-                Operations
-              </Link>
-              <Link to="/store/analytics" className="text-slate-700 hover:text-blue-900 font-medium">
-                Analytics
-              </Link>
-            </nav>
-            <div className="flex items-center space-x-4">
-              <button className="text-slate-500 hover:text-slate-700">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </button>
-              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                <span className="text-blue-900 font-bold text-sm">RS</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navigation role="store" currentPage="operations" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
