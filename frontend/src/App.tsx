@@ -23,6 +23,7 @@ import ProcurementDashboard from './components/procurement/ProcurementDashboard'
 import VendorManagement from './components/procurement/VendorManagement';
 import PurchaseOrders from './components/procurement/PurchaseOrders';
 import ContractManagement from './components/procurement/ContractManagement';
+import ReturnsRadar from './components/ai-features/ReturnsRadar';
 
 function App() {
   return (
@@ -55,6 +56,8 @@ function App() {
           <Route path="/procurement/vendors" element={<VendorManagement />} />
           <Route path="/procurement/orders" element={<PurchaseOrders />} />
           <Route path="/procurement/contracts" element={<ContractManagement />} />
+          <Route path="/store/returns-radar" element={<ReturnsRadar />} />
+          <Route path="/supplier/returns-radar" element={<ReturnsRadar />} />
         </Routes>
       </div>
     </Router>

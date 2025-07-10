@@ -61,6 +61,7 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
           { key: 'customer', label: 'Customer', path: '/store/customer' },
           { key: 'operations', label: 'Operations', path: '/store/operations' },
           { key: 'analytics', label: 'Analytics', path: '/store/analytics' },
+          { key: 'returns-radar', label: 'Returns Radar', path: '/store/returns-radar' },
           { key: 'simulator', label: 'Simulator', path: '/store/inventory-simulator' }
         ];
       case 'supplier':
@@ -70,6 +71,7 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
           { key: 'predictions', label: 'Predictions', path: '/supplier/predictions' },
           { key: 'inventory', label: 'Inventory', path: '/supplier/inventory' },
           { key: 'analytics', label: 'Analytics', path: '/supplier/analytics' },
+          { key: 'returns-radar', label: 'Returns Radar', path: '/supplier/returns-radar' },
           { key: 'simulator', label: 'Simulator', path: '/supplier/inventory-simulator' }
         ];
       case 'procurement':
