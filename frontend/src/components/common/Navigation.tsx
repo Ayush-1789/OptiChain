@@ -62,6 +62,7 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
           { key: 'operations', label: 'Operations', path: '/store/operations' },
           { key: 'analytics', label: 'Analytics', path: '/store/analytics' },
           { key: 'returns-radar', label: 'Returns Radar', path: '/store/returns-radar' },
+          { key: 'demand-forecasting', label: 'Demand Forecasting', path: '/store/demand-forecasting' },
           { key: 'simulator', label: 'Simulator', path: '/store/inventory-simulator' }
         ];
       case 'supplier':
@@ -72,6 +73,7 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
           { key: 'inventory', label: 'Inventory', path: '/supplier/inventory' },
           { key: 'analytics', label: 'Analytics', path: '/supplier/analytics' },
           { key: 'returns-radar', label: 'Returns Radar', path: '/supplier/returns-radar' },
+          { key: 'demand-forecasting', label: 'Demand Forecasting', path: '/supplier/demand-forecasting' },
           { key: 'simulator', label: 'Simulator', path: '/supplier/inventory-simulator' }
         ];
       case 'procurement':
@@ -80,6 +82,8 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
           { key: 'vendors', label: 'Vendors', path: '/procurement/vendors' },
           { key: 'orders', label: 'Orders', path: '/procurement/orders' },
           { key: 'contracts', label: 'Contracts', path: '/procurement/contracts' },
+          { key: 'supplymesh-ai', label: 'SupplyMesh AI', path: '/procurement/supplymesh-ai' },
+          { key: 'demand-forecasting', label: 'Demand Forecasting', path: '/procurement/demand-forecasting' },
           { key: 'simulator', label: 'Simulator', path: '/procurement/inventory-simulator' }
         ];
       case 'regional':
@@ -88,6 +92,8 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
           { key: 'analytics', label: 'Analytics', path: '/regional/analytics' },
           { key: 'network', label: 'Network', path: '/regional/network' },
           { key: 'operations', label: 'Operations', path: '/regional/operations' },
+          { key: 'supplymesh-ai', label: 'SupplyMesh AI', path: '/regional/supplymesh-ai' },
+          { key: 'demand-forecasting', label: 'Demand Forecasting', path: '/regional/demand-forecasting' },
           { key: 'simulator', label: 'Simulator', path: '/regional/inventory-simulator' }
         ];
       default:

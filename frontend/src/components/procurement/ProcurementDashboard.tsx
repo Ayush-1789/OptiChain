@@ -19,7 +19,8 @@ import {
   Download,
   Eye,
   Filter,
-  RefreshCw
+  RefreshCw,
+  Brain
 } from 'lucide-react';
 
 // Helper function for Indian currency formatting
@@ -441,6 +442,73 @@ const ProcurementDashboard: React.FC = () => {
             )}
           </div>
         ))}
+      </div>
+
+      {/* Quick Actions */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 mb-8">
+        <div className="p-6 border-b border-gray-200">
+          <h2 className="text-xl font-semibold text-gray-900">Quick Actions</h2>
+          <p className="text-gray-600 text-sm">Access key procurement tools and features</p>
+        </div>
+        <div className="p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link to="/procurement/supplymesh-ai" className="group p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-all duration-200">
+              <div className="flex items-center mb-3">
+                <div className="p-2 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
+                  <BarChart3 className="h-5 w-5 text-blue-600" />
+                </div>
+                <h3 className="ml-3 font-medium text-gray-900 group-hover:text-blue-900">SupplyMesh AI</h3>
+              </div>
+              <p className="text-sm text-gray-600 group-hover:text-blue-800">
+                AI-powered supplier intelligence and risk monitoring
+              </p>
+            </Link>
+            <Link to="/procurement/demand-forecasting" className="group p-4 border border-gray-200 rounded-lg hover:border-purple-300 hover:bg-purple-50 transition-all duration-200">
+              <div className="flex items-center mb-3">
+                <div className="p-2 bg-purple-100 rounded-lg group-hover:bg-purple-200 transition-colors">
+                  <Brain className="h-5 w-5 text-purple-600" />
+                </div>
+                <h3 className="ml-3 font-medium text-gray-900 group-hover:text-purple-900">Demand Forecasting</h3>
+              </div>
+              <p className="text-sm text-gray-600 group-hover:text-purple-800">
+                Advanced AI demand prediction and planning
+              </p>
+            </Link>
+            <Link to="/procurement/vendors" className="group p-4 border border-gray-200 rounded-lg hover:border-green-300 hover:bg-green-50 transition-all duration-200">
+              <div className="flex items-center mb-3">
+                <div className="p-2 bg-green-100 rounded-lg group-hover:bg-green-200 transition-colors">
+                  <Users className="h-5 w-5 text-green-600" />
+                </div>
+                <h3 className="ml-3 font-medium text-gray-900 group-hover:text-green-900">Vendor Management</h3>
+              </div>
+              <p className="text-sm text-gray-600 group-hover:text-green-800">
+                Manage vendor relationships and performance
+              </p>
+            </Link>
+            <Link to="/procurement/orders" className="group p-4 border border-gray-200 rounded-lg hover:border-indigo-300 hover:bg-indigo-50 transition-all duration-200">
+              <div className="flex items-center mb-3">
+                <div className="p-2 bg-indigo-100 rounded-lg group-hover:bg-indigo-200 transition-colors">
+                  <ShoppingCart className="h-5 w-5 text-indigo-600" />
+                </div>
+                <h3 className="ml-3 font-medium text-gray-900 group-hover:text-indigo-900">Purchase Orders</h3>
+              </div>
+              <p className="text-sm text-gray-600 group-hover:text-indigo-800">
+                Create and track purchase orders
+              </p>
+            </Link>
+            <Link to="/procurement/inventory-simulator" className="group p-4 border border-gray-200 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-all duration-200">
+              <div className="flex items-center mb-3">
+                <div className="p-2 bg-orange-100 rounded-lg group-hover:bg-orange-200 transition-colors">
+                  <Package className="h-5 w-5 text-orange-600" />
+                </div>
+                <h3 className="ml-3 font-medium text-gray-900 group-hover:text-orange-900">Inventory Simulator</h3>
+              </div>
+              <p className="text-sm text-gray-600 group-hover:text-orange-800">
+                Simulate procurement strategies and outcomes
+              </p>
+            </Link>
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">

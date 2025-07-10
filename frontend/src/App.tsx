@@ -24,6 +24,8 @@ import VendorManagement from './components/procurement/VendorManagement';
 import PurchaseOrders from './components/procurement/PurchaseOrders';
 import ContractManagement from './components/procurement/ContractManagement';
 import ReturnsRadar from './components/ai-features/ReturnsRadar';
+import SupplyMeshAI from './components/ai-features/SupplyMeshAI';
+import DemandForecastingAI from './components/ai-features/DemandForecastingAI';
 
 function App() {
   return (
@@ -58,6 +60,12 @@ function App() {
           <Route path="/procurement/contracts" element={<ContractManagement />} />
           <Route path="/store/returns-radar" element={<ReturnsRadar />} />
           <Route path="/supplier/returns-radar" element={<ReturnsRadar />} />
+          <Route path="/procurement/supplymesh-ai" element={<SupplyMeshAI />} />
+          <Route path="/regional/supplymesh-ai" element={<SupplyMeshAI />} />
+          <Route path="/store/demand-forecasting" element={<DemandForecastingAI />} />
+          <Route path="/supplier/demand-forecasting" element={<DemandForecastingAI />} />
+          <Route path="/procurement/demand-forecasting" element={<DemandForecastingAI />} />
+          <Route path="/regional/demand-forecasting" element={<DemandForecastingAI />} />
         </Routes>
       </div>
     </Router>
