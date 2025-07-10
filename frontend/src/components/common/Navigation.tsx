@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 interface NavigationProps {
-  role: 'store' | 'supplier' | 'procurement' | 'regional';
+  role: 'store' | 'supplier' | 'procurement' | 'regional' | 'delivery';
   currentPage?: string; // Optional: to override auto-detection
 }
 
@@ -30,6 +30,8 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
     if (path.includes('/supplymesh-ai')) return 'supplymesh-ai';
     if (path.includes('/demand-forecasting')) return 'demand-forecasting';
     if (path.includes('/smart-drop-sync')) return 'smart-drop-sync';
+    if (path.includes('/dropbot-ai')) return 'dropbot-ai';
+    if (path.includes('/loadswap')) return 'loadswap';
     return 'dashboard'; // fallback
   };
 
@@ -41,6 +43,7 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
       case 'supplier': return 'OptiChain Supplier Portal';
       case 'procurement': return 'OptiChain Procurement Portal';
       case 'regional': return 'OptiChain Regional Portal';
+      case 'delivery': return 'OptiChain Delivery Portal';
       default: return 'OptiChain Portal';
     }
   };
@@ -51,6 +54,7 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
       case 'supplier': return 'SP';
       case 'procurement': return 'PM';
       case 'regional': return 'RM';
+      case 'delivery': return 'DM';
       default: return 'U';
     }
   };
@@ -101,6 +105,14 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
           { key: 'supplymesh-ai', label: 'SupplyMesh AI', path: '/regional/supplymesh-ai' },
           { key: 'demand-forecasting', label: 'Demand Forecasting', path: '/regional/demand-forecasting' },
           { key: 'simulator', label: 'Simulator', path: '/regional/inventory-simulator' }
+        ];
+      case 'delivery':
+        return [
+          { key: 'dashboard', label: 'Dashboard', path: '/delivery/dashboard' },
+          { key: 'routes', label: 'Route Planning', path: '/delivery/routes' },
+          { key: 'fleet', label: 'Fleet Management', path: '/delivery/fleet' },
+          { key: 'dropbot-ai', label: 'DropBot AI', path: '/delivery/dropbot-ai' },
+          { key: 'loadswap', label: 'LoadSwap', path: '/delivery/loadswap' }
         ];
       default:
         return [];
