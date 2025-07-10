@@ -26,6 +26,10 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
     if (path.includes('/vendors')) return 'vendors';
     if (path.includes('/contracts')) return 'contracts';
     if (path.includes('/network')) return 'network';
+    if (path.includes('/returns-radar')) return 'returns-radar';
+    if (path.includes('/supplymesh-ai')) return 'supplymesh-ai';
+    if (path.includes('/demand-forecasting')) return 'demand-forecasting';
+    if (path.includes('/smart-drop-sync')) return 'smart-drop-sync';
     return 'dashboard'; // fallback
   };
 
@@ -74,6 +78,7 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
           { key: 'analytics', label: 'Analytics', path: '/supplier/analytics' },
           { key: 'returns-radar', label: 'Returns Radar', path: '/supplier/returns-radar' },
           { key: 'demand-forecasting', label: 'Demand Forecasting', path: '/supplier/demand-forecasting' },
+          { key: 'smart-drop-sync', label: 'SmartDropSync', path: '/supplier/smart-drop-sync' },
           { key: 'simulator', label: 'Simulator', path: '/supplier/inventory-simulator' }
         ];
       case 'procurement':
@@ -84,6 +89,7 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
           { key: 'contracts', label: 'Contracts', path: '/procurement/contracts' },
           { key: 'supplymesh-ai', label: 'SupplyMesh AI', path: '/procurement/supplymesh-ai' },
           { key: 'demand-forecasting', label: 'Demand Forecasting', path: '/procurement/demand-forecasting' },
+          { key: 'smart-drop-sync', label: 'SmartDropSync', path: '/procurement/smart-drop-sync' },
           { key: 'simulator', label: 'Simulator', path: '/procurement/inventory-simulator' }
         ];
       case 'regional':

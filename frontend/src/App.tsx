@@ -26,6 +26,7 @@ import ContractManagement from './components/procurement/ContractManagement';
 import ReturnsRadar from './components/ai-features/ReturnsRadar';
 import SupplyMeshAI from './components/ai-features/SupplyMeshAI';
 import DemandForecastingAI from './components/ai-features/DemandForecastingAI';
+import SmartDropSync from './components/ai-features/SmartDropSync';
 
 function App() {
   return (
@@ -66,6 +67,8 @@ function App() {
           <Route path="/supplier/demand-forecasting" element={<DemandForecastingAI />} />
           <Route path="/procurement/demand-forecasting" element={<DemandForecastingAI />} />
           <Route path="/regional/demand-forecasting" element={<DemandForecastingAI />} />
+          <Route path="/procurement/smart-drop-sync" element={<SmartDropSync />} />
+          <Route path="/supplier/smart-drop-sync" element={<SmartDropSync />} />
         </Routes>
       </div>
     </Router>

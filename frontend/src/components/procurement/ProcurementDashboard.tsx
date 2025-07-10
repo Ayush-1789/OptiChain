@@ -507,6 +507,17 @@ const ProcurementDashboard: React.FC = () => {
                 Simulate procurement strategies and outcomes
               </p>
             </Link>
+            <Link to="/procurement/smart-drop-sync" className="group p-4 border border-gray-200 rounded-lg hover:border-teal-300 hover:bg-teal-50 transition-all duration-200">
+              <div className="flex items-center mb-3">
+                <div className="p-2 bg-teal-100 rounded-lg group-hover:bg-teal-200 transition-colors">
+                  <Truck className="h-5 w-5 text-teal-600" />
+                </div>
+                <h3 className="ml-3 font-medium text-gray-900 group-hover:text-teal-900">SmartDropSync</h3>
+              </div>
+              <p className="text-sm text-gray-600 group-hover:text-teal-800">
+                Intelligent cross-docking coordination system
+              </p>
+            </Link>
           </div>
         </div>
       </div>
