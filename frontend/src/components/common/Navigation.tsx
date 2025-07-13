@@ -65,9 +65,9 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
         return [
           { key: 'dashboard', label: 'Dashboard', path: '/store/dashboard' },
           { key: 'inventory', label: 'Inventory', path: '/store/inventory' },
-          { key: 'staff', label: 'Staff', path: '/store/staff' },
+          // { key: 'staff', label: 'Staff', path: '/store/staff' },
           { key: 'customer', label: 'Customer', path: '/store/customer' },
-          { key: 'operations', label: 'Operations', path: '/store/operations' },
+          // { key: 'operations', label: 'Operations', path: '/store/operations' },
           { key: 'analytics', label: 'Analytics', path: '/store/analytics' },
           { key: 'returns-radar', label: 'Returns Radar', path: '/store/returns-radar' },
           { key: 'demand-forecasting', label: 'Demand Forecasting', path: '/store/demand-forecasting' },
@@ -154,8 +154,8 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
           </nav>
           <div className="flex items-center space-x-4">
             <button className="text-slate-500 hover:text-slate-700">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 19V20H3V19L5 17V11C5 7.9 7.03 5.17 10 4.29C10.38 4.61 10.89 4.8 11.5 4.9C11.66 4.94 11.82 4.97 12 5C12.18 4.97 12.34 4.94 12.5 4.9C13.11 4.8 13.62 4.61 14 4.29C16.97 5.17 19 7.9 19 11V17L21 19ZM12 22C13.11 22 14 21.11 14 20H10C10 21.11 10.89 22 12 22Z"/>
               </svg>
             </button>
             <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">

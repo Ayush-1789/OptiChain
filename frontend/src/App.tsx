@@ -44,9 +44,9 @@ function App() {
           <Route path="/supplier/analytics" element={<SupplierAnalytics />} />
           <Route path="/store/dashboard" element={<StoreDashboard />} />
           <Route path="/store/inventory" element={<StoreInventory />} />
-          <Route path="/store/staff" element={<StaffManagement />} />
+          {/* <Route path="/store/staff" element={<StaffManagement />} /> */}
           <Route path="/store/customer" element={<CustomerExperience />} />
-          <Route path="/store/operations" element={<StoreOperations />} />
+          {/* <Route path="/store/operations" element={<StoreOperations />} /> */}
           <Route path="/store/analytics" element={<SalesAnalytics />} />
           <Route path="/store/inventory-simulator" element={<InventorySimulator />} />
           <Route path="/supplier/inventory-simulator" element={<InventorySimulator />} />
