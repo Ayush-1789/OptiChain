@@ -507,13 +507,231 @@ const DemandForecastingAI: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Visual Chart Placeholder */}
+                  {/* Visual Chart */}
                   <div>
                     <h4 className="text-md font-medium text-gray-700 mb-4">Seasonal Demand Visualization</h4>
-                    <div className="bg-gray-100 rounded-lg p-8 text-center">
-                      <Calendar className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-600">Interactive seasonal pattern charts will be displayed here</p>
-                      <p className="text-sm text-gray-500 mt-2">Showing year-over-year seasonal trends and predictions</p>
+                    <div className="bg-white rounded-lg border border-gray-200 p-6">
+                      <div className="space-y-4">
+                        {/* Chart Container */}
+                        <div className="relative h-80">
+                          <svg className="w-full h-full" viewBox="0 0 900 320">
+                            {/* Grid lines */}
+                            {[0, 1, 2, 3, 4].map((i) => (
+                              <line
+                                key={i}
+                                x1="60"
+                                y1={60 + i * 50}
+                                x2="840"
+                                y2={60 + i * 50}
+                                stroke="#f3f4f6"
+                                strokeWidth="1"
+                              />
+                            ))}
+                            
+                            {/* Y-axis labels */}
+                            {['2.5x', '2.0x', '1.5x', '1.0x', '0.5x'].map((label, i) => (
+                              <text
+                                key={i}
+                                x="50"
+                                y={65 + i * 50}
+                                textAnchor="end"
+                                className="text-xs fill-gray-500"
+                              >
+                                {label}
+                              </text>
+                            ))}
+                            
+                            {/* X-axis baseline */}
+                            <line
+                              x1="60"
+                              y1="270"
+                              x2="840"
+                              y2="270"
+                              stroke="#e5e7eb"
+                              strokeWidth="2"
+                            />
+                            
+                            {/* X-axis labels - months */}
+                            {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((month, i) => (
+                              <text
+                                key={i}
+                                x={85 + i * 65}
+                                y="290"
+                                textAnchor="middle"
+                                className="text-xs fill-gray-600 font-medium"
+                              >
+                                {month}
+                              </text>
+                            ))}
+                            
+                            {/* Demand line chart based on actual seasonal data */}
+                            <path
+                              d="M 85,160 L 150,160 L 215,260 L 280,260 L 345,260 L 410,260 L 475,210 L 540,210 L 605,210 L 670,80 L 735,80 L 800,160"
+                              fill="none"
+                              stroke="#3b82f6"
+                              strokeWidth="4"
+                              className="drop-shadow-sm"
+                            />
+                            
+                            {/* Data points with actual seasonal values */}
+                            {[
+                              { x: 85, y: 160, multiplier: 1.8, label: 'Wedding Season' },   // Jan
+                              { x: 150, y: 160, multiplier: 1.8, label: 'Wedding Season' },  // Feb
+                              { x: 215, y: 260, multiplier: 0.7, label: 'Summer' },         // Mar
+                              { x: 280, y: 260, multiplier: 0.7, label: 'Summer' },         // Apr
+                              { x: 345, y: 260, multiplier: 0.7, label: 'Summer' },         // May
+                              { x: 410, y: 260, multiplier: 0.7, label: 'Summer' },         // Jun
+                              { x: 475, y: 210, multiplier: 0.9, label: 'Monsoon' },        // Jul
+                              { x: 540, y: 210, multiplier: 0.9, label: 'Monsoon' },        // Aug
+                              { x: 605, y: 210, multiplier: 0.9, label: 'Monsoon' },        // Sep
+                              { x: 670, y: 80, multiplier: 2.3, label: 'Diwali Season' },   // Oct
+                              { x: 735, y: 80, multiplier: 2.3, label: 'Diwali Season' },   // Nov
+                              { x: 800, y: 160, multiplier: 1.8, label: 'Wedding Season' }  // Dec
+                            ].map((point, i) => (
+                              <g key={i}>
+                                <circle
+                                  cx={point.x}
+                                  cy={point.y}
+                                  r="5"
+                                  fill="#3b82f6"
+                                  className="drop-shadow-sm"
+                                />
+                                <circle
+                                  cx={point.x}
+                                  cy={point.y}
+                                  r="10"
+                                  fill="transparent"
+                                  className="hover:fill-blue-100 cursor-pointer transition-all"
+                                />
+                              </g>
+                            ))}
+                            
+                            {/* Seasonal highlight areas - starting from baseline (1.0x = y=210) */}
+                            {/* Diwali Season (Oct-Nov) - extends upward from baseline */}
+                            <rect
+                              x="655"
+                              y="80"
+                              width="140"
+                              height="130"
+                              fill="#fef3c7"
+                              fillOpacity="0.3"
+                              rx="6"
+                            />
+                            <text
+                              x="725"
+                              y="40"
+                              textAnchor="middle"
+                              className="text-sm fill-yellow-700 font-semibold"
+                            >
+                              Diwali Season (2.3x)
+                            </text>
+                            
+                            {/* Wedding Season (Jan-Feb, Dec) - extends upward from baseline */}
+                            <rect
+                              x="70"
+                              y="160"
+                              width="145"
+                              height="50"
+                              fill="#dbeafe"
+                              fillOpacity="0.4"
+                              rx="6"
+                            />
+                            <text
+                              x="142"
+                              y="125"
+                              textAnchor="middle"
+                              className="text-sm fill-blue-700 font-semibold"
+                            >
+                              Wedding Season (1.8x)
+                            </text>
+                            
+                            {/* Wedding Season Dec - extends upward from baseline */}
+                            <rect
+                              x="785"
+                              y="160"
+                              width="60"
+                              height="50"
+                              fill="#dbeafe"
+                              fillOpacity="0.4"
+                              rx="6"
+                            />
+                            
+                            {/* Summer (Mar-Jun) - extends downward from baseline */}
+                            <rect
+                              x="200"
+                              y="210"
+                              width="225"
+                              height="50"
+                              fill="#fecaca"
+                              fillOpacity="0.3"
+                              rx="6"
+                            />
+                            <text
+                              x="312"
+                              y="310"
+                              textAnchor="middle"
+                              className="text-sm fill-red-700 font-semibold"
+                            >
+                              Summer (0.7x)
+                            </text>
+                            
+                            {/* Monsoon (Jul-Sep) - extends downward from baseline */}
+                            <rect
+                              x="460"
+                              y="210"
+                              width="160"
+                              height="20"
+                              fill="#d1fae5"
+                              fillOpacity="0.4"
+                              rx="6"
+                            />
+                            <text
+                              x="540"
+                              y="175"
+                              textAnchor="middle"
+                              className="text-sm fill-green-700 font-semibold"
+                            >
+                              Monsoon (0.9x)
+                            </text>
+                            
+                            {/* Baseline reference line (1.0x) */}
+                            <line
+                              x1="60"
+                              y1="210"
+                              x2="840"
+                              y2="210"
+                              stroke="#9ca3af"
+                              strokeWidth="1"
+                              strokeDasharray="5,5"
+                            />
+                            <text
+                              x="50"
+                              y="215"
+                              textAnchor="end"
+                              className="text-xs fill-gray-600 font-medium"
+                            >
+                              1.0x
+                            </text>
+                          </svg>
+                        </div>
+                        
+                        {/* Legend */}
+                        <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                          <div className="flex items-center gap-6">
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-0.5 bg-blue-500 rounded"></div>
+                              <span className="text-xs text-gray-600">Demand Multiplier</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-yellow-200 rounded"></div>
+                              <span className="text-xs text-gray-600">Peak Season</span>
+                            </div>
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Based on 3-year historical average
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     {/* Quick Seasonal Insights */}
