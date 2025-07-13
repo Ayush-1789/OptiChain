@@ -487,8 +487,9 @@ const InventoryManagement: React.FC = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Inventory Items */}
-          <div className="lg:col-span-2">
+          {/* Left Column: Inventory Items + Recent Movements */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Inventory Items */}
             <motion.div 
               className="bg-white rounded-lg border border-slate-200"
               initial={{ opacity: 0, y: 20 }}
@@ -501,7 +502,7 @@ const InventoryManagement: React.FC = () => {
                   <span className="text-sm text-slate-600">{sortedItems.length} items</span>
                 </div>
               </div>
-              <div className="divide-y divide-slate-200 max-h-96 overflow-y-auto">
+              <div className="divide-y divide-slate-200 max-h-[850px] overflow-y-auto">
                 {sortedItems.map((item, index) => (
                   <motion.div 
                     key={item.id}
@@ -577,9 +578,44 @@ const InventoryManagement: React.FC = () => {
                 ))}
               </div>
             </motion.div>
+
+            {/* Recent Movements */}
+            <motion.div 
+              className="bg-white rounded-lg border border-slate-200"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <div className="p-6 border-b border-slate-200">
+                <h2 className="text-lg font-semibold text-slate-900">Recent Movements</h2>
+              </div>
+              <div className="p-6 space-y-4">
+                {recentMovements.map((movement) => (
+                  <div key={movement.id} className="flex items-start space-x-3 pb-4 border-b border-slate-100 last:border-b-0">
+                    <div className="p-2 bg-slate-50 rounded-lg">
+                      {getMovementIcon(movement.type)}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-medium text-slate-900 text-sm">{movement.product}</h4>
+                      <p className="text-sm text-slate-600">{movement.reason}</p>
+                      <div className="flex items-center justify-between mt-1">
+                        <span className={`text-sm font-medium ${
+                          movement.type === 'incoming' ? 'text-green-600' : 
+                          movement.type === 'outgoing' ? 'text-blue-600' : 
+                          movement.type === 'expired' ? 'text-red-600' : 'text-purple-600'
+                        }`}>
+                          {movement.type === 'incoming' ? '+' : movement.type === 'adjustment' && movement.quantity < 0 ? '' : movement.type === 'outgoing' || movement.type === 'expired' ? '-' : ''}{Math.abs(movement.quantity)}
+                        </span>
+                        <span className="text-xs text-slate-500">{new Date(movement.timestamp).toLocaleString()}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
 
-          {/* Side Panel */}
+          {/* Right Column: Warehouse Status + Quick Actions */}
           <div className="space-y-6">
             {/* Warehouse Status */}
             <motion.div 
@@ -614,41 +650,6 @@ const InventoryManagement: React.FC = () => {
                       </div>
                     </div>
                     <p className="text-xs text-slate-500">{warehouse.currentUtilization.toLocaleString()} / {warehouse.capacity.toLocaleString()} units</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Recent Movements */}
-            <motion.div 
-              className="bg-white rounded-lg border border-slate-200"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <div className="p-6 border-b border-slate-200">
-                <h2 className="text-lg font-semibold text-slate-900">Recent Movements</h2>
-              </div>
-              <div className="p-6 space-y-4">
-                {recentMovements.map((movement) => (
-                  <div key={movement.id} className="flex items-start space-x-3 pb-4 border-b border-slate-100 last:border-b-0">
-                    <div className="p-2 bg-slate-50 rounded-lg">
-                      {getMovementIcon(movement.type)}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-medium text-slate-900 text-sm">{movement.product}</h4>
-                      <p className="text-sm text-slate-600">{movement.reason}</p>
-                      <div className="flex items-center justify-between mt-1">
-                        <span className={`text-sm font-medium ${
-                          movement.type === 'incoming' ? 'text-green-600' : 
-                          movement.type === 'outgoing' ? 'text-blue-600' : 
-                          movement.type === 'expired' ? 'text-red-600' : 'text-purple-600'
-                        }`}>
-                          {movement.type === 'incoming' ? '+' : movement.type === 'adjustment' && movement.quantity < 0 ? '' : movement.type === 'outgoing' || movement.type === 'expired' ? '-' : ''}{Math.abs(movement.quantity)}
-                        </span>
-                        <span className="text-xs text-slate-500">{new Date(movement.timestamp).toLocaleString()}</span>
-                      </div>
-                    </div>
                   </div>
                 ))}
               </div>
