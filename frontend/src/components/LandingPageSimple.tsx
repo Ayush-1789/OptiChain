@@ -144,7 +144,7 @@ const LandingPageSimple: React.FC = () => {
                     <span className="text-4xl font-bold text-blue-900 leading-none">
                       Walmart
                     </span>
-                    <span className="text-xs text-gray-400 uppercase tracking-widest mt-1">
+                    <span className="text-xs text-gray-400 uppercase tracking-widest mt-1 text-center">
                       OptiChain Suite
                     </span>
                   </div>

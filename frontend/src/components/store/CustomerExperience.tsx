@@ -150,11 +150,11 @@ const CustomerExperience: React.FC = () => {
 
   // Category-wise satisfaction
   const categorySatisfaction = [
-    { category: 'Groceries', rating: 4.5, reviews: 345 },
-    { category: 'Electronics', rating: 4.2, reviews: 186 },
-    { category: 'Clothing', rating: 4.0, reviews: 124 },
-    { category: 'Home & Garden', rating: 4.3, reviews: 98 },
-    { category: 'Health & Beauty', rating: 4.4, reviews: 156 }
+    { category: 'Groceries', rating: 4.7, reviews: 345 },
+    { category: 'Electronics', rating: 3.8, reviews: 186 },
+    { category: 'Clothing', rating: 3.5, reviews: 124 },
+    { category: 'Home & Garden', rating: 4.8, reviews: 98 },
+    { category: 'Health & Beauty', rating: 4.2, reviews: 156 }
   ];
 
   const filteredFeedback = selectedCategory === 'all' 
@@ -180,12 +180,31 @@ const CustomerExperience: React.FC = () => {
   };
 
   const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`h-4 w-4 ${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
-      />
-    ));
+    return (
+      <div className="flex items-center space-x-0.5 w-24">
+        {Array.from({ length: 5 }, (_, i) => {
+          const starValue = i + 1;
+          const fillPercentage = Math.max(0, Math.min(100, (rating - i) * 100));
+          
+          return (
+            <div key={i} className="relative w-4 h-4">
+              {/* Background star (empty) */}
+              <Star className="absolute top-0 left-0 w-4 h-4 text-gray-300" />
+              
+              {/* Foreground star (filled) */}
+              {fillPercentage > 0 && (
+                <div 
+                  className="absolute top-0 left-0 overflow-hidden"
+                  style={{ width: `${fillPercentage}%` }}
+                >
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
   };
 
   return (
@@ -300,9 +319,9 @@ const CustomerExperience: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="flex items-center">
-                      {renderStars(Math.floor(category.rating))}
+                      {renderStars(category.rating)}
                     </div>
-                    <span className="font-medium text-gray-900">{category.rating}</span>
+                    <span className="font-medium text-gray-900">{category.rating.toFixed(1)}</span>
                   </div>
                 </div>
               ))}

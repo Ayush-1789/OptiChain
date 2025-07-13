@@ -366,13 +366,113 @@ const ReturnsRadar: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Visual Chart Placeholder */}
+                  {/* Visual Chart */}
                   <div>
                     <h4 className="text-md font-medium text-gray-700 mb-4">Return Trend Analysis</h4>
-                    <div className="bg-gray-100 rounded-lg p-8 text-center">
-                      <PieChart className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-600">Interactive return trend charts will be displayed here</p>
-                      <p className="text-sm text-gray-500 mt-2">Visual analytics coming soon</p>
+                    <div className="bg-white rounded-lg border border-gray-200 p-6">
+                      <div className="flex items-center justify-between">
+                        {/* Pie Chart */}
+                        <div className="relative w-48 h-48">
+                          <svg className="w-48 h-48 transform -rotate-90" viewBox="0 0 100 100">
+                            {(() => {
+                              const total = categoryAnalytics.reduce((sum, item) => sum + item.returnRate, 0);
+                              let currentAngle = 0;
+                              const colors = ['#3b82f6', '#06b6d4', '#10b981', '#8b5cf6', '#f59e0b'];
+                              
+                              return categoryAnalytics.map((item, index) => {
+                                const percentage = (item.returnRate / total) * 100;
+                                const angle = (percentage / 100) * 360;
+                                const radius = 40;
+                                const centerX = 50;
+                                const centerY = 50;
+                                
+                                const startAngle = (currentAngle * Math.PI) / 180;
+                                const endAngle = ((currentAngle + angle) * Math.PI) / 180;
+                                
+                                const x1 = centerX + radius * Math.cos(startAngle);
+                                const y1 = centerY + radius * Math.sin(startAngle);
+                                const x2 = centerX + radius * Math.cos(endAngle);
+                                const y2 = centerY + radius * Math.sin(endAngle);
+                                
+                                const largeArcFlag = angle > 180 ? 1 : 0;
+                                
+                                const pathData = [
+                                  `M ${centerX} ${centerY}`,
+                                  `L ${x1} ${y1}`,
+                                  `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
+                                  'Z'
+                                ].join(' ');
+                                
+                                currentAngle += angle;
+                                
+                                return (
+                                  <path
+                                    key={index}
+                                    d={pathData}
+                                    fill={colors[index]}
+                                    stroke="white"
+                                    strokeWidth="0.5"
+                                    className="hover:opacity-80 transition-opacity duration-200"
+                                  />
+                                );
+                              });
+                            })()}
+                          </svg>
+                          
+                          {/* Center circle */}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center border border-gray-200">
+                              <div className="text-center">
+                                <div className="text-xs font-medium text-gray-700">Total</div>
+                                <div className="text-sm font-bold text-gray-900">
+                                  {categoryAnalytics.reduce((sum, item) => sum + item.returnRate, 0).toFixed(1)}%
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* Legend */}
+                        <div className="space-y-3 ml-8">
+                          {categoryAnalytics.map((item, index) => {
+                            const colors = ['#3b82f6', '#06b6d4', '#10b981', '#8b5cf6', '#f59e0b'];
+                            const total = categoryAnalytics.reduce((sum, cat) => sum + cat.returnRate, 0);
+                            const percentage = ((item.returnRate / total) * 100).toFixed(1);
+                            
+                            return (
+                              <div key={index} className="flex items-center gap-3">
+                                <div 
+                                  className="w-4 h-4 rounded-sm"
+                                  style={{ backgroundColor: colors[index] }}
+                                ></div>
+                                <div className="flex-1">
+                                  <div className="flex items-center justify-between">
+                                    <span className="text-sm font-medium text-gray-700">{item.category}</span>
+                                    <div className="flex items-center gap-2">
+                                      {item.trend === 'increasing' && (
+                                        <TrendingUp className="h-3 w-3 text-red-500" />
+                                      )}
+                                      {item.trend === 'decreasing' && (
+                                        <TrendingDown className="h-3 w-3 text-green-500" />
+                                      )}
+                                      {item.trend === 'stable' && (
+                                        <div className="h-3 w-3 flex items-center justify-center">
+                                          <div className="h-0.5 w-2 bg-gray-400 rounded"></div>
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center justify-between text-xs text-gray-500">
+                                    <span>{item.returnRate}% return rate</span>
+                                    <span>{percentage}% of total</span>
+                                  </div>
+                                  <div className="text-xs text-gray-600">{item.value} in returns</div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
