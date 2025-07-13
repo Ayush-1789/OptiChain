@@ -111,7 +111,7 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
           { key: 'dashboard', label: 'Dashboard', path: '/delivery/dashboard' },
           { key: 'routes', label: 'Route Planning', path: '/delivery/routes' },
           { key: 'fleet', label: 'Fleet Management', path: '/delivery/fleet' },
-          { key: 'dropbot-ai', label: 'DropBot AI', path: '/delivery/dropbot-ai' },
+          // { key: 'dropbot-ai', label: 'DropBot AI', path: '/delivery/dropbot-ai' },
           { key: 'loadswap', label: 'LoadSwap', path: '/delivery/loadswap' }
         ];
       default:

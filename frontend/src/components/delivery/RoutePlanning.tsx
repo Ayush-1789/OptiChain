@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Navigation from '../common/Navigation';
 import { 
   MapPin, 
-  Navigation, 
+  Navigation as NavigationIcon, 
   Clock, 
   Truck, 
   Route,
@@ -236,42 +237,9 @@ const RoutePlanning: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Navigation Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link to="/" className="flex items-center">
-                <span className="text-2xl font-bold text-blue-900">Walmart</span>
-                <span className="text-sm text-slate-600 ml-2">OptiChain Delivery Portal</span>
-              </Link>
-            </div>
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/delivery/dashboard" className="text-slate-700 hover:text-blue-900 font-medium">
-                Dashboard
-              </Link>
-              <Link to="/delivery/routes" className="text-blue-900 font-medium border-b-2 border-blue-900 pb-1">
-                Route Planning
-              </Link>
-              <Link to="/delivery/fleet" className="text-slate-700 hover:text-blue-900 font-medium">
-                Fleet Management
-              </Link>
-            </nav>
-            <div className="flex items-center space-x-4">
-              <button className="text-slate-500 hover:text-slate-700">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </button>
-              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                <span className="text-blue-900 font-bold text-sm">DM</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navigation role="delivery" currentPage="routes" />
 
-      <div className="p-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
@@ -435,7 +403,7 @@ const RoutePlanning: React.FC = () => {
               <div className="bg-white rounded-xl shadow-sm border border-gray-200">
                 <div className="p-6 border-b border-gray-200">
                   <div className="flex items-center gap-3">
-                    <Navigation className="h-6 w-6 text-green-600" />
+                    <NavigationIcon className="h-6 w-6 text-green-600" />
                     <h2 className="text-xl font-semibold text-gray-900">Optimization</h2>
                   </div>
                 </div>
