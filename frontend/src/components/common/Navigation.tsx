@@ -77,13 +77,13 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
         return [
           { key: 'dashboard', label: 'Dashboard', path: '/supplier/dashboard' },
           { key: 'orders', label: 'Orders', path: '/supplier/orders' },
-          { key: 'predictions', label: 'Predictions', path: '/supplier/predictions' },
+          // { key: 'predictions', label: 'Predictions', path: '/supplier/predictions' },
           { key: 'inventory', label: 'Inventory', path: '/supplier/inventory' },
           { key: 'analytics', label: 'Analytics', path: '/supplier/analytics' },
-          { key: 'returns-radar', label: 'Returns Radar', path: '/supplier/returns-radar' },
+          // { key: 'returns-radar', label: 'Returns Radar', path: '/supplier/returns-radar' },
           { key: 'demand-forecasting', label: 'Demand Forecasting', path: '/supplier/demand-forecasting' },
           { key: 'smart-drop-sync', label: 'SmartDropSync', path: '/supplier/smart-drop-sync' },
-          { key: 'simulator', label: 'Simulator', path: '/supplier/inventory-simulator' }
+          // { key: 'simulator', label: 'Simulator', path: '/supplier/inventory-simulator' }
         ];
       case 'procurement':
         return [
