@@ -11,18 +11,9 @@ interface DashboardMetric {
   icon: React.ReactNode;
 }
 
-interface StaffMember {
-  id: string;
-  name: string;
-  role: string;
-  shift: 'morning' | 'afternoon' | 'night';
-  status: 'present' | 'absent' | 'late';
-  department: string;
-}
-
 interface StoreAlert {
   id: string;
-  type: 'inventory' | 'equipment' | 'staff' | 'customer' | 'safety';
+  type: 'inventory' | 'equipment' | 'customer' | 'safety';
   message: string;
   severity: 'high' | 'medium' | 'low';
   timestamp: string;
@@ -87,17 +78,6 @@ const StoreDashboard: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       )
-    },
-    {
-      label: 'Staff Present',
-      value: '42/45',
-      change: '93.3%',
-      changeType: 'positive',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      )
     }
   ];
 
@@ -106,15 +86,6 @@ const StoreDashboard: React.FC = () => {
     { category: 'Customer Count', target: 1200, actual: 1247, unit: 'customers', trend: 'up' },
     { category: 'Avg Basket Size', target: 850, actual: 780, unit: '₹', trend: 'down' },
     { category: 'Items Sold', target: 2500, actual: 2847, unit: 'items', trend: 'up' }
-  ];
-
-  const todayStaff: StaffMember[] = [
-    { id: '1', name: 'Priya Sharma', role: 'Cashier', shift: 'morning', status: 'present', department: 'Frontend' },
-    { id: '2', name: 'Rajesh Kumar', role: 'Floor Manager', shift: 'morning', status: 'present', department: 'General' },
-    { id: '3', name: 'Anita Patel', role: 'Fresh Produce', shift: 'morning', status: 'late', department: 'Fresh' },
-    { id: '4', name: 'Vikram Singh', role: 'Security', shift: 'morning', status: 'present', department: 'Security' },
-    { id: '5', name: 'Meera Reddy', role: 'Customer Service', shift: 'afternoon', status: 'absent', department: 'Frontend' },
-    { id: '6', name: 'Suresh Gupta', role: 'Stock Associate', shift: 'afternoon', status: 'present', department: 'Backend' }
   ];
 
   const storeAlerts: StoreAlert[] = [
@@ -141,25 +112,8 @@ const StoreDashboard: React.FC = () => {
       severity: 'medium',
       timestamp: '2 hours ago',
       department: 'Frontend'
-    },
-    {
-      id: '4',
-      type: 'staff',
-      message: 'Meera Reddy marked absent - Customer service desk needs coverage for afternoon shift',
-      severity: 'medium',
-      timestamp: '3 hours ago',
-      department: 'Customer Service'
     }
   ];
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'present': return 'bg-emerald-100 text-emerald-800 border border-emerald-200';
-      case 'absent': return 'bg-red-100 text-red-800 border border-red-200';
-      case 'late': return 'bg-amber-100 text-amber-800 border border-amber-200';
-      default: return 'bg-slate-100 text-slate-800 border border-slate-200';
-    }
-  };
 
   const getAlertSeverityColor = (severity: string) => {
     switch (severity) {
@@ -188,12 +142,6 @@ const StoreDashboard: React.FC = () => {
         return (
           <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-        );
-      case 'staff':
-        return (
-          <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
         );
       default:
@@ -252,7 +200,7 @@ const StoreDashboard: React.FC = () => {
 
         {/* Key Metrics */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -329,46 +277,9 @@ const StoreDashboard: React.FC = () => {
                 ))}
               </div>
             </div>
-
-            {/* Staff Overview */}
-            <div className="bg-white rounded-lg border border-slate-200">
-              <div className="p-6 border-b border-slate-200">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-slate-900">Today's Staff</h2>
-                  <Link to="/store/staff" className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
-                    Manage All 
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {todayStaff.map((staff) => (
-                    <div key={staff.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                          <span className="text-blue-900 font-bold text-sm">
-                            {staff.name.split(' ').map(n => n[0]).join('')}
-                          </span>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-slate-900">{staff.name}</p>
-                          <p className="text-xs text-slate-600">{staff.role} • {staff.department}</p>
-                        </div>
-                      </div>
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(staff.status)}`}>
-                        {staff.status.charAt(0).toUpperCase() + staff.status.slice(1)}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </motion.div>
 
-          {/* Alerts & Quick Actions */}
+          {/* Alerts */}
           <motion.div 
             className="space-y-6"
             initial={{ opacity: 0, y: 20 }}
@@ -399,130 +310,6 @@ const StoreDashboard: React.FC = () => {
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            {/* Quick Actions */}
-            <div className="bg-white rounded-lg border border-slate-200">
-              <div className="p-6 border-b border-slate-200">
-                <h2 className="text-lg font-semibold text-slate-900">Quick Actions</h2>
-              </div>
-              <div className="p-6 space-y-3">
-                <Link 
-                  to="/store/inventory" 
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition-colors group border border-slate-100"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
-                      <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                      </svg>
-                    </div>
-                    <span className="font-medium text-slate-900">Check Inventory</span>
-                  </div>
-                  <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-
-                <Link 
-                  to="/store/staff" 
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition-colors group border border-slate-100"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-amber-50 rounded-lg group-hover:bg-amber-100 transition-colors">
-                      <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
-                    </div>
-                    <span className="font-medium text-slate-900">Manage Staff</span>
-                  </div>
-                  <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-
-                <button className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition-colors group border border-slate-100">
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-emerald-50 rounded-lg group-hover:bg-emerald-100 transition-colors">
-                      <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <span className="font-medium text-slate-900">Daily Checklist</span>
-                  </div>
-                  <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-
-                <Link 
-                  to="/store/customer" 
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition-colors group border border-slate-100"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-purple-50 rounded-lg group-hover:bg-purple-100 transition-colors">
-                      <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                    <span className="font-medium text-slate-900">Customer Feedback</span>
-                  </div>
-                  <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-
-                <Link 
-                  to="/store/inventory-simulator" 
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition-colors group border border-slate-100"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-indigo-50 rounded-lg group-hover:bg-indigo-100 transition-colors">
-                      <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                      </svg>
-                    </div>
-                    <span className="font-medium text-slate-900">Inventory Simulator</span>
-                  </div>
-                  <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-
-                <Link 
-                  to="/store/returns-radar" 
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition-colors group border border-slate-100"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-red-50 rounded-lg group-hover:bg-red-100 transition-colors">
-                      <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                      </svg>
-                    </div>
-                    <span className="font-medium text-slate-900">Returns Radar</span>
-                  </div>
-                  <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-
-                <Link 
-                  to="/store/demand-forecasting" 
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition-colors group border border-slate-100"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-purple-50 rounded-lg group-hover:bg-purple-100 transition-colors">
-                      <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                      </svg>
-                    </div>
-                    <span className="font-medium text-slate-900">Demand Forecasting</span>
-                  </div>
-                  <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
               </div>
             </div>
           </motion.div>
