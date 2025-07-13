@@ -140,12 +140,14 @@ const LandingPageSimple: React.FC = () => {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <Link to="/" className="flex items-center">
-                  <span className="text-2xl font-bold text-blue-900">
-                    Walmart
-                  </span>
-                  <span className="text-sm text-gray-600 ml-2">
-                    OptiChain Supply Suite
-                  </span>
+                  <div className="flex flex-col justify-center">
+                    <span className="text-4xl font-bold text-blue-900 leading-none">
+                      Walmart
+                    </span>
+                    <span className="text-xs text-gray-400 uppercase tracking-widest mt-1">
+                      OptiChain Suite
+                    </span>
+                  </div>
                 </Link>
               </div>
             </div>
@@ -215,13 +217,12 @@ const LandingPageSimple: React.FC = () => {
               </motion.div>
               
               {/* Trust Indicators */}
-              <div className="border-t border-gray-200 pt-8">
+              <div className="border-t border-gray-200 pt-6">
                 <p className="text-sm text-gray-600 mb-4">Trusted by leading enterprises:</p>
                 <div className="flex flex-wrap gap-8 items-center opacity-60">
                   <span className="text-lg font-semibold">Fortune 500 Retailers</span>
                   <span className="text-lg font-semibold">3PL Providers</span>
                   <span className="text-lg font-semibold">Healthcare Networks</span>
-                  <span className="text-lg font-semibold">Food Distributors</span>
                 </div>
               </div>
             </div>
@@ -763,7 +764,7 @@ const LandingPageSimple: React.FC = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 Walmart Inc. All rights reserved. OptiChain Supply Suite is a trademark of Walmart Inc.</p>
+            <p>&copy; 2025 Walmart Inc. All rights reserved. OptiChain Supply Suite is a trademark of Walmart Inc.</p>
           </div>
         </div>
       </footer>

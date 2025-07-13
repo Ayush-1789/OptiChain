@@ -208,12 +208,14 @@ const LandingPageProfessional: React.FC = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <span className="text-2xl font-bold text-blue-900">
-                  Walmart
-                </span>
-                <span className="text-sm text-gray-600 ml-2">
-                  Quantum Supply Chain Suite
-                </span>
+                <div className="flex flex-col justify-center">
+                  <span className="text-4xl font-bold text-blue-900 leading-none">
+                    Walmart
+                  </span>
+                  <span className="text-xs text-gray-400 uppercase tracking-widest mt-1">
+                    OptiChain Suite
+                  </span>
+                </div>
               </div>
             </div>
             <nav className="hidden md:flex space-x-8">
@@ -711,8 +713,10 @@ const LandingPageProfessional: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <div className="text-2xl font-bold mb-4">Walmart</div>
-              <div className="text-gray-400 mb-4">Quantum Supply Chain Suite</div>
+              <div className="flex flex-col mb-4">
+                <div className="text-2xl font-bold mb-1">Walmart</div>
+                <div className="text-gray-400 text-sm uppercase tracking-wide">OptiChain Suite</div>
+              </div>
               <p className="text-gray-400 text-sm">
                 Enterprise-grade supply chain optimization delivering measurable results for Fortune 500 companies.
               </p>

@@ -127,8 +127,14 @@ const Navigation: React.FC<NavigationProps> = ({ role, currentPage }) => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <span className="text-2xl font-bold text-blue-900">Walmart</span>
-              <span className="text-sm text-slate-600 ml-2">{getPortalName()}</span>
+              <div className="flex flex-col justify-center">
+                <span className="text-4xl font-bold text-blue-900 leading-none">
+                  Walmart
+                </span>
+                <span className="text-xs text-gray-400 uppercase tracking-widest mt-1">
+                  OptiChain Suite
+                </span>
+              </div>
             </Link>
           </div>
           <nav className="hidden md:flex space-x-8">
