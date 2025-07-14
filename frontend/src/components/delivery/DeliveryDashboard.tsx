@@ -232,7 +232,7 @@ const DeliveryDashboard: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 pt-16">
       <Navigation role="delivery" currentPage="dashboard" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -372,7 +372,7 @@ const DeliveryDashboard: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Fleet Utilization */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 h-fit">
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center gap-3">
               <BarChart3 className="h-6 w-6 text-blue-600" />
@@ -408,7 +408,7 @@ const DeliveryDashboard: React.FC = () => {
             </div>
             
             <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-              <h3 className="font-medium text-blue-900 mb-2">Fleet Insights</h3>
+              <h3 className="text-xl font-medium text-blue-900 mb-2">Fleet Insights</h3>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• 30 total vehicles in fleet</li>
                 <li>• Average fuel efficiency: 12 km/L</li>
@@ -456,95 +456,6 @@ const DeliveryDashboard: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Quick Actions */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2">
-          {/* This space can be used for additional widgets in the future */}
-        </div>
-        
-        {/* Quick Actions Panel */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="p-6 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">Quick Actions</h2>
-          </div>
-          <div className="p-6 space-y-3">
-            <Link 
-              to="/delivery/routes" 
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors group border border-gray-100"
-            >
-              <div className="flex items-center space-x-3">
-                <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
-                  <NavigationIcon className="w-5 h-5 text-blue-600" />
-                </div>
-                <span className="font-medium text-gray-900">Plan Routes</span>
-              </div>
-              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-
-            <Link 
-              to="/delivery/fleet" 
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors group border border-gray-100"
-            >
-              <div className="flex items-center space-x-3">
-                <div className="p-2 bg-green-50 rounded-lg group-hover:bg-green-100 transition-colors">
-                  <Truck className="w-5 h-5 text-green-600" />
-                </div>
-                <span className="font-medium text-gray-900">Manage Fleet</span>
-              </div>
-              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-
-            <Link 
-              to="/delivery/dropbot-ai" 
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors group border border-gray-100"
-            >
-              <div className="flex items-center space-x-3">
-                <div className="p-2 bg-purple-50 rounded-lg group-hover:bg-purple-100 transition-colors">
-                  <Cpu className="w-5 h-5 text-purple-600" />
-                </div>
-                <span className="font-medium text-gray-900">DropBot AI</span>
-              </div>
-              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-
-            <Link 
-              to="/delivery/loadswap" 
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors group border border-gray-100"
-            >
-              <div className="flex items-center space-x-3">
-                <div className="p-2 bg-indigo-50 rounded-lg group-hover:bg-indigo-100 transition-colors">
-                  <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                  </svg>
-                </div>
-                <span className="font-medium text-gray-900">LoadSwap</span>
-              </div>
-              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-
-            <button className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors group border border-gray-100">
-              <div className="flex items-center space-x-3">
-                <div className="p-2 bg-amber-50 rounded-lg group-hover:bg-amber-100 transition-colors">
-                  <AlertTriangle className="w-5 h-5 text-amber-600" />
-                </div>
-                <span className="font-medium text-gray-900">Emergency Alert</span>
-              </div>
-              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
           </div>
         </div>
       </div>

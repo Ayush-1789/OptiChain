@@ -339,7 +339,7 @@ const InventoryManagement: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 pt-16">
       {/* Header */}
       <Navigation role="supplier" currentPage="inventory" />
 

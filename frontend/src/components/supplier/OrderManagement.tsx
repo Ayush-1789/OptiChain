@@ -170,7 +170,7 @@ const OrderManagement: React.FC = () => {
   const urgentOrders = filteredOrders.filter(order => order.priority === 'high' && order.status !== 'delivered').length;
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 pt-16">
       <Navigation role="supplier" currentPage="orders" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
